@@ -1,0 +1,42 @@
+PORT=3000
+SMTPUSER=3r4rss@gmail.com
+SMTPPW=ipvrfwbtvhentzrv
+SMTPHOST=smtp.gmail.com
+SMTPPORT=465
+DBPORT=3306
+DBUSER=root
+DBPASSWORD=root
+DBHOST=localhost
+DBDATABASE=aquest
+
+signup(Post): { "EMAIL": "userAA@gmail.com", "USERNAME": "UserAA", "PASSWORD": "UserAA" }; http://localhost:3000/signup;
+
+account activation (put): http://localhost:3000/signup/search?user=userAA@gmail.com;
+
+login(Post): { "USERNAME": "UserAA", "PASSWORD": "UserAA" }; http://localhost:3000/login;
+
+
+
+
+
+
+
+
+
+query for userlist:
+------------------
+
+CREATE TABLE USERSLIST (ID INT PRIMARY KEY AUTO_INCREMENT, 
+USERNAME VARCHAR(50) UNIQUE NOT NULL, PASSWORD VARCHAR(100) NOT NULL,
+EMAIL VARCHAR(50) UNIQUE NOT NULL, USERSTATUS VARCHAR(20), CREATEDON DATE);
+
+ALTER TABLE USERSLIST AUTO_INCREMENT = 1001;
+
+INSERT INTO USERSLIST (USERNAME, PASSWORD, EMAIL, USERSTATUS, CREATEDON) 
+	VALUES ('USERA', 'PASSWRD', 'USER@GMAIL.COM', 'ACTIVATED', current_date());
+
+TRUNCATE USERSLIST;
+
+SELECT * FROM USERSLIST;
+
+DROP TABLE USERSLIST;
